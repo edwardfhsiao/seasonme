@@ -18,7 +18,9 @@
   "author": "",
   "license": "MIT",
   "bin": {
-    "github-pages-commit": "bin/commit.js"
+    "github-pages-commit": "bin/commit.js",
+    "github-pages-push": "bin/push.js",
+    "github-pages-deploy": "bin/deploy.js"
   },
   "bugs": {
     "url": "https://github.com/edwardfhsiao/seasonme/issues"
