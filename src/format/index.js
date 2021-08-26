@@ -186,7 +186,7 @@ const format = async props => {
   console.log(fileNamesHash);
   // handle rename srt file
   await handleSubRenaming(renamedFiles, fileNamesHash);
-  console.log(renderMyLog('Formated Successfully!'));
+  console.log(renderMyLog('Formatted Successfully!'));
 };
 
 module.exports = {
