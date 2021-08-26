@@ -1,7 +1,6 @@
 /coverage
 /example
 /webpack
-/src
 /.babelrc
 /.eslintrc.json
 /eslintignore.json

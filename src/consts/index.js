@@ -1,5 +1,4 @@
-const SHOWS = ['The Office US'];
-// const SHOWS = ['the office (us)', 'westworld', 'Westworld', 'How I Met Your Mother', 'how i met you mother', 'the office us', 'two and a half men', 'Two and a Half Men'];
+const SHOWS = ['the office (us)', 'westworld', 'Westworld', 'How I Met Your Mother', 'how i met you mother', 'the office us', 'two and a half men', 'Two and a Half Men'];
 const SEPARATORS = ['.', ' '];
 const POSTFIXES = ['WEB-DL.DD5.1.H264-dummy', 'WEB DL DD5 1 H264-dummy', 'WEB-DL DD5.1.H264-dummy'];
 const AUTO_GENERATED_DUMMY_FOLDER_NAME = 'AUTO_GENERATED_DUMMY_FILES';
