@@ -1,17 +1,12 @@
 #! /usr/bin/env node
-const generateDummyFIles = require('../src/scripts/generate-dummy-files/script.js');
-const format = require('../src/scripts/organize-file-names/script.js');
-// import generateDummyFIles from '../src/scripts/generate-dummy-files'
-// generateDummyFIles();
+const generateDummyFIles = require('../src/generate-dummy-files/index.js');
+const format = require('../src/organize-file-names/index.js');
 // var shell = require("shelljs");
-
 // shell.exec("echo cli" + process.argv[2] + process.argv[3]);
-
 const chalk = require('chalk');
 const boxen = require('boxen');
 const fs = require('fs');
 const PATH_NAME = process.cwd() + '/src/scripts/organize-file-names/dummy-files';
-
 // require('yargs')
 //   .scriptName("pirate-parser")
 //   .usage('$0 <cmd> [args]')
@@ -26,7 +21,6 @@ const PATH_NAME = process.cwd() + '/src/scripts/organize-file-names/dummy-files'
 //   })
 //   .help()
 //   .argv
-
 const yargs = require('yargs');
 const argv = yargs
   .command('format', 'Formatting the files', v => {

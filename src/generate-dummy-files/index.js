@@ -1,9 +1,8 @@
 const fs = require('fs');
 const { exec } = require('child_process');
 const fsPromises = fs.promises;
-const SHOWS = ['westworld', 'Westworld', 'How I Met Your Mother', 'how i met you mother', 'the office (us)', 'the office us', 'two and a half men', 'Two and a Half Men'];
-const SEPARATORS = ['.', ' '];
-const POSTFIXES = ['WEB-DL.DD5.1.H264-PeeWee', 'WEB DL DD5 1 H264-PeeWee', 'WEB-DL DD5.1.H264-PeeWee'];
+const { AUTO_GENERATED_DUMMY_FOLDER_NAME, SHOWS, SEPARATORS, POSTFIXES } = require('../consts/index.js');
+const path = require('path');
 const generateSeason = num => {
   return `S${num}`;
 };
@@ -69,7 +68,9 @@ const handleExec = cmd =>
   });
 module.exports = async props => {
   const { directory, number } = props;
-  await before(directory);
+  // const dir = directory || process.cwd();
+  const dir = directory || path.join(__dirname, '../', '../', AUTO_GENERATED_DUMMY_FOLDER_NAME);
+  await before(dir);
   const fileNumbers = Number(number);
   // if (!fs.existsSync(PATH_NAME)) {
   //   fs.mkdirSync(PATH_NAME);
@@ -89,11 +90,11 @@ module.exports = async props => {
     const videoFile = `${show}${separatorV}${SEASONS[seIndex][sV](sNV)}${EPISODES[seIndex][eV](eNV)}${separatorV}${postfix}.mkv`;
     const subFile = `${show}${separatorS}${SEASONS[seIndex][sS](sNV)}${EPISODES[seIndex][eS](eNV)}${separatorS}${postfix}.srt`;
     fsPromises
-      .appendFile(`${directory}/${videoFile}`, '')
+      .appendFile(`${dir}/${videoFile}`, '')
       .then(() => {})
       .catch(console.log);
     fsPromises
-      .appendFile(`${directory}/${subFile}`, '')
+      .appendFile(`${dir}/${subFile}`, '')
       .then(() => {})
       .catch(console.log);
   }

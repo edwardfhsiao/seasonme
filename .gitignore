@@ -1,5 +1,5 @@
 /dist
-/src/scripts/organize-file-names/dummy-files/
+/AUTO_GENERATED_DUMMY_FILES/
 /node_modules
 package-lock.json
 .env*

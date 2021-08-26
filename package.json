@@ -14,10 +14,6 @@
   "author": "",
   "license": "MIT",
   "bin": {
-    "github-pages-commit": "bin/commit.js",
-    "github-pages-push": "bin/push.js",
-    "github-pages-deploy": "bin/deploy.js",
-    "console": "bin/console.js",
     "seasonme": "bin/cli.js"
   },
   "bugs": {
