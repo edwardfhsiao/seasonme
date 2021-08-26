@@ -1,8 +1,7 @@
 const fs = require('fs');
 const { exec } = require('child_process');
 const fsPromises = fs.promises;
-const { AUTO_GENERATED_DUMMY_FOLDER_NAME, SHOWS, SEPARATORS, POSTFIXES } = require('../consts/index.js');
-const path = require('path');
+const { SHOWS, SEPARATORS, POSTFIXES } = require('../consts/index.js');
 const generateSeason = num => {
   return `S${num}`;
 };
@@ -56,8 +55,7 @@ const splitWithDot = v => v.split(' ').join('.');
 const splitWithSpace = v => v;
 const SPLITS = [splitWithDot, splitWithSpace];
 const before = async pathName => {
-  await handleExec(`rm -rf ${pathName}`);
-  await handleExec(`mkdir ${pathName}`);
+  await handleExec(`rm -rf ${pathName}/*`);
 };
 const handleExec = cmd =>
   new Promise((resolve, reject) => {
@@ -66,16 +64,9 @@ const handleExec = cmd =>
       else resolve(stdout);
     });
   });
-module.exports = async props => {
-  const { directory, number } = props;
-  // const dir = directory || process.cwd();
-  const dir = directory || path.join(__dirname, '../', '../', AUTO_GENERATED_DUMMY_FOLDER_NAME);
-  await before(dir);
-  const fileNumbers = Number(number);
-  // if (!fs.existsSync(PATH_NAME)) {
-  //   fs.mkdirSync(PATH_NAME);
-  // }
-  for (let i = 0; i < fileNumbers; i += 1) {
+const generateDummyNames = async num => {
+  const res = { videos: [], subs: [] };
+  for (let i = 0; i < num; i += 1) {
     const show = SPLITS[getRandomInt(SPLITS.length)](SHOWS[getRandomInt(SHOWS.length)]);
     const seIndex = getRandomInt(SEASONS.length);
     const sV = getRandomInt(SEASONS[0].length);
@@ -89,13 +80,31 @@ module.exports = async props => {
     const separatorS = SEPARATORS[getRandomInt(SEPARATORS.length)];
     const videoFile = `${show}${separatorV}${SEASONS[seIndex][sV](sNV)}${EPISODES[seIndex][eV](eNV)}${separatorV}${postfix}.mkv`;
     const subFile = `${show}${separatorS}${SEASONS[seIndex][sS](sNV)}${EPISODES[seIndex][eS](eNV)}${separatorS}${postfix}.srt`;
+    res.videos.push(videoFile);
+    res.subs.push(subFile);
+  }
+  return res;
+};
+const saveFiles = async (dir, videos, subs) => {
+  for (let i = 0; i < videos.length; i += 1) {
     fsPromises
-      .appendFile(`${dir}/${videoFile}`, '')
+      .appendFile(`${dir}/${videos[i]}`, '')
       .then(() => {})
       .catch(console.log);
     fsPromises
-      .appendFile(`${dir}/${subFile}`, '')
+      .appendFile(`${dir}/${subs[i]}`, '')
       .then(() => {})
       .catch(console.log);
   }
+};
+const generateDummyFiles = async props => {
+  const { directory, number } = props;
+  const dir = directory || process.cwd();
+  await before(dir);
+  const { videos, subs } = await generateDummyNames(Number(number));
+  await saveFiles(dir, videos, subs);
+};
+module.exports = {
+  generateDummyNames,
+  generateDummyFiles,
 };
