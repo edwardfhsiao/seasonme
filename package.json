@@ -1,6 +1,6 @@
 {
   "name": "seasonme",
-  "version": "0.0.5",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,22 @@
     "type": "git",
     "url": "git+https://github.com/edwardfhsiao/seasonme.git"
   },
+  "keywords": [
+    "formatter",
+    "format",
+    "episodes",
+    "subtitles",
+    "videos",
+    "organizer",
+    "mkv",
+    "cc",
+    "file-name",
+    "tv-shows",
+    "seasons",
+    "renaming-files",
+    "renaming",
+    "series"
+  ],
   "author": "",
   "license": "MIT",
   "bin": {
@@ -29,12 +45,12 @@
     "chai": "^4.2.0",
     "eslint": "^7.17.0",
     "eslint-plugin-babel": "^5.3.1",
-    "klaw-sync": "^6.0.0",
     "mocha": "^8.2.1"
   },
   "dependencies": {
     "boxen": "^5.0.1",
     "chalk": "^4.1.2",
+    "klaw-sync": "^6.0.0",
     "shelljs": "^0.8.4",
     "yargs": "^17.1.1"
   }
