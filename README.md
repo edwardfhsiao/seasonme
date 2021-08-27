@@ -1,6 +1,6 @@
 # seasonme
 
-A tool to organize your TV shows' files naming and make sure that the subtitle's file matches with the video file in the folder.
+A tool to organize your TV show files naming and make sure that the subtitle's file matches with the video file in the folder.
 
 For instanse, inside ```The.Office.US.S01``` folder you have ```The.Office.US.S01e1.mkv```, but a ```the office 1x1.srt``` was downloaded, and now you can just 
 run ```seasonme format```, it will set the files to ```The.Office.US.S01S01.mkv```,```The.Office.US.S01S01.srt``` respectively.
