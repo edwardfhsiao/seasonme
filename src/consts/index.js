@@ -1,3 +1,4 @@
+const PREFIX = '__temp__seasonme__';
 const SHOWS = ['the office (us)', 'westworld', 'Westworld', 'How I Met Your Mother', 'how i met you mother', 'the office us', 'two and a half men', 'Two and a Half Men'];
 const SEPARATORS = ['.', ' '];
 const POSTFIXES = ['WEB-DL.DD5.1.H264-dummy', 'WEB DL DD5 1 H264-dummy', 'WEB-DL DD5.1.H264-dummy'];
@@ -14,6 +15,7 @@ const SUB_EXTS = ['.srt', '.ass', '.ttml', '.sbv', '.dfxp', '.vtt', '.txt'];
 // x: 1x1 abbr: s01e01 full: Season 1 Episode 1
 const CASES = ['x', 'abbr', 'full'];
 module.exports = {
+  PREFIX,
   SHOWS,
   SEPARATORS,
   POSTFIXES,

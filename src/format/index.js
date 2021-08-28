@@ -1,7 +1,7 @@
 const klawSync = require('klaw-sync');
 const fs = require('fs');
 const { isMochaRunning } = require('../utils/index.js');
-const { CASES, X_REGEX, S_REGEX, E_REGEX, SEASON_REGEX, EPISODE_REGEX, SYMBOL_AND_REGEX, SYMBOL_DOT_REGEX, VIDEO_EXTS, SUB_EXTS } = require('../consts/index.js');
+const { PREFIX, CASES, X_REGEX, S_REGEX, E_REGEX, SEASON_REGEX, EPISODE_REGEX, SYMBOL_AND_REGEX, SYMBOL_DOT_REGEX, VIDEO_EXTS, SUB_EXTS } = require('../consts/index.js');
 const chalk = require('chalk');
 const boxen = require('boxen');
 const log = chalk.bold.hex('#ffffff');
@@ -131,7 +131,17 @@ const handleVideoRenaming = async files => {
       newFileName = newFileName.replace(replacer, `${sequenceInfo.season}${sequenceInfo.episode}`.toUpperCase()).replace('bluray', 'BluRay');
       res.push(file.replace(fileName, newFileName));
       if (!isMochaRunning) {
-        await fs.promises.rename(file, file.replace(fileName, newFileName));
+        const tempFileName = file.replace(fileName, `${PREFIX}${newFileName}`);
+        try {
+          await fs.promises.rename(file, tempFileName);
+        } catch (err) {
+          console.log(renderMyError('Failed to rename'));
+        }
+        try {
+          await fs.promises.rename(tempFileName, tempFileName.replace(PREFIX, ''));
+        } catch (err) {
+          console.log(renderMyError('Failed to rename'));
+        }
       }
     }
   }
@@ -155,10 +165,14 @@ const handleSubRenaming = async (files, fileNamesHash) => {
     if (SUB_EXTS.includes(ext)) {
       let newFileName = formatVideoName(fileName);
       const sequenceInfo = getSequenceInfo(newFileName);
-      if (fileName.includes('中文') || fileName.includes('简体') || fileName.includes('chs')) {
+      if (fileName.includes('中文') || fileName.includes('简体') || fileName.toLowerCase().includes('chs')) {
         res.push(file.replace(fileName, fileNamesHash[`${sequenceInfo.season}_${sequenceInfo.episode}`]));
         if (!isMochaRunning) {
-          await fs.promises.rename(file, file.replace(fileName, fileNamesHash[`${sequenceInfo.season}_${sequenceInfo.episode}`] + '.中文字幕'));
+          try {
+            await fs.promises.rename(file, file.replace(fileName, fileNamesHash[`${sequenceInfo.season}_${sequenceInfo.episode}`] + '.中文字幕'));
+          } catch (err) {
+            console.log(renderMyError('Failed to rename'));
+          }
         }
       } else {
         if (!sequenceInfo) {
@@ -167,7 +181,11 @@ const handleSubRenaming = async (files, fileNamesHash) => {
         }
         res.push(file.replace(fileName, fileNamesHash[`${sequenceInfo.season}_${sequenceInfo.episode}`]));
         if (!isMochaRunning) {
-          await fs.promises.rename(file, file.replace(fileName, fileNamesHash[`${sequenceInfo.season}_${sequenceInfo.episode}`]));
+          try {
+            await fs.promises.rename(file, file.replace(fileName, fileNamesHash[`${sequenceInfo.season}_${sequenceInfo.episode}`]));
+          } catch (err) {
+            console.log(renderMyError('Failed to rename'));
+          }
         }
       }
     }
