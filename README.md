@@ -18,6 +18,11 @@ npm install seasonme -g
 ~$ cd ../The.Office.US.S01
 ~$ seasonme format
 ```
+or
+
+```sh
+~$ seasonme format -d MY_FOLDER_PATH
+```
 
 ```
 The.Office.US.S01
