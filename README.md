@@ -27,10 +27,10 @@ or
 ```
 The.Office.US.S01
 │
-│   The.Office.US.S01e1.blueray.mkv
-│   The.Office.US.S01e2.blueray.mkv
-│   The.Office.US.S01e3.blueray.mkv
-│   The.Office.US.S01e4.blueray.mkv
+│   The.Office.US.S01e1.bluray.mkv
+│   The.Office.US.S01e2.bluray.mkv
+│   The.Office.US.S01e3.bluray.mkv
+│   The.Office.US.S01e4.bluray.mkv
 │   the office 1x1.srt
 │   the office 1x2.srt
 │   the office 1x3.srt
@@ -40,14 +40,14 @@ The.Office.US.S01
 ```
 The.Office.US.S01
 │
-│   The.Office.US.S01E1.BlueRay.mkv
-│   The.Office.US.S01E1.BlueRay.srt
-│   The.Office.US.S01E2.BlueRay.mkv
-│   The.Office.US.S01E2.BlueRay.srt
-│   The.Office.US.S01E3.BlueRay.mkv
-│   The.Office.US.S01E3.BlueRay.srt
-│   The.Office.US.S01E4.BlueRay.mkv
-│   The.Office.US.S01E4.BlueRay.srt
+│   The.Office.US.S01E1.BluRay.mkv
+│   The.Office.US.S01E1.BluRay.srt
+│   The.Office.US.S01E2.BluRay.mkv
+│   The.Office.US.S01E2.BluRay.srt
+│   The.Office.US.S01E3.BluRay.mkv
+│   The.Office.US.S01E3.BluRay.srt
+│   The.Office.US.S01E4.BluRay.mkv
+│   The.Office.US.S01E4.BluRay.srt
 ```
 
 <br/>
