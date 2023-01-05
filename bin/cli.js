@@ -36,9 +36,8 @@ yargs
   .example('$0 movesubs -t series -d dir', 'Move subs in series folder (in designate dir)')
   .example(
     '$0 movesubs -t series -d dir',
-    'Move subs in all movies under one directory. e.g\n' +
-      'series\n' +
-      '└───Twin.Peaks\n' +
+    'Move subs in one series directory. e.g\n' +
+      '│───Twin.Peaks\n' +
       '│       └───Twin.Peaks.S01\n' +
       '│       │     └───Subs\n' +
       '│       │        └───Twin.Peaks.S01E01\n' +
@@ -48,9 +47,7 @@ yargs
       '│             └───Subs\n' +
       '│                └───Twin.Peaks.S02E01\n' +
       '│                      └───English3.srt\n' +
-      '│                      └───English4.srt\n' +
-      '│       \n' +
-      '└───The.Office.US\n',
+      '│                      └───English4.srt\n',
   )
   .example(
     '$0 movesubs -t movies -d dir',
