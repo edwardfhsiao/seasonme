@@ -20,14 +20,14 @@ yargs
   .example('$0 generate -d dir -n 4', 'Generate 4 files (in designate dir)')
   .command('movesubs', 'Move subs in series folder', v => {
     const { directory, type } = v.argv;
-    const videoType = type === 'series' || type === 'movie' ? type : 'series';
+    const videoType = type === 'series' || type === 'movies' ? type : 'series';
     if (R.isNil(directory)) {
       console.error('Please provide a ' + videoType + ' directory');
       return;
     }
     if (type === 'series') {
       moveSeriesSubs({ directory });
-    } else if (type === 'movie') {
+    } else if (type === 'movies') {
       moveMoviesSubs({ directory });
     } else {
       moveSeriesSubs({ directory });
