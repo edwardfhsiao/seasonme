@@ -41,22 +41,30 @@ const handleTransferFiles = async allEpisodesFolders => {
       for (const subFile of episodeSubs) {
         const subFileName = R.last(subFile.split('/'));
         if (subFileName[0] !== '.') {
-          const matches = subFileName.match(/[0-9]+_+/gim);
-          const numberPart = matches && matches.length ? `.${matches[0]}` : '.';
-          const number = numberPart.replace(/_/g, '');
-          const ext = getFileName(subFileName)[1];
-          if (subFileName.toLowerCase().includes('chinese')|| subFileName.toLowerCase().includes('chi')) {
-            const numberPartReg = new RegExp(numberPart.replace(/\./g, ''), 'gi');
-            const command = `mv '${subFile}' '${serieFolder}/${serieName}.${subFileName.replace(numberPartReg, '').replace(/chinese/gi, `中文字幕${number}`)}'`;
-            await handleExec(command);
-          } else if (subFileName.toLowerCase().includes('english') || subFileName.toLowerCase().includes('eng')) {
-            const numberPartReg = new RegExp(numberPart.replace(/\./g, ''), 'gi');
-            const command = `mv '${subFile}' '${serieFolder}/${serieName}${subFileName.replace(numberPartReg, '').replace(/english/gi, `.English${number}`)}'`;
-            await handleExec(command);
-          } else {
-            // const numberPartReg = new RegExp(numberPart.replace(/\./g, ''), 'gi');
-            // const command = `mv '${subFile}' '${serieFolder}/${serieName}.${subFileName.replace(numberPartReg, '').replace(ext, `${number}${ext}`)}'`;
-            // await handleExec(command);
+          const matches = subFileName.match(/^[0-9]+_+/gim);
+          if (matches) {
+            // console.log(subFileName, matches)
+            const numberPart = matches && matches.length ? `.${matches[0]}` : '.';
+            const number = numberPart.replace(/_/g, '');
+            const ext = getFileName(subFileName)[1];
+            const chineseLans = ['chinese', 'chi', 'chs', 'cht', 'zh', 'zh-cn', 'zh-tw', 'zh-hk', 'zh-sg', 'zh-mo'];
+            const englishLans = ['english', 'eng', 'en'];
+            const lowerSubFileName = subFileName.toLowerCase();
+            const eng = R.find(i => lowerSubFileName.includes(i))(englishLans);
+            const chi = R.find(i => lowerSubFileName.includes(i))(chineseLans);
+            if (chi) {
+              const numberPartReg = new RegExp(numberPart.replace(/\./g, ''), 'gi');
+              const command = `mv '${subFile}' '${serieFolder}/${serieName}.${subFileName.replace(numberPartReg, '').replace(new RegExp(chi, 'gi'), `中文字幕${number}`)}'`;
+              await handleExec(command);
+            } else if (eng) {
+              const numberPartReg = new RegExp(numberPart.replace(/\./g, ''), 'gi');
+              const command = `mv '${subFile}' '${serieFolder}/${serieName}${subFileName.replace(numberPartReg, '').replace(new RegExp(eng, 'gi'), `.English${number}`)}'`;
+              await handleExec(command);
+            } else {
+              // const numberPartReg = new RegExp(numberPart.replace(/\./g, ''), 'gi');
+              // const command = `mv '${subFile}' '${serieFolder}/${serieName}.${subFileName.replace(numberPartReg, '').replace(ext, `${number}${ext}`)}'`;
+              // await handleExec(command);
+            }
           }
         }
       }
