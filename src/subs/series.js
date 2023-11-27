@@ -45,7 +45,7 @@ const handleTransferFiles = async allEpisodesFolders => {
           const numberPart = matches && matches.length ? `.${matches[0]}` : '.';
           const number = numberPart.replace(/_/g, '');
           const ext = getFileName(subFileName)[1];
-          if (subFileName.toLowerCase().includes('chinese')) {
+          if (subFileName.toLowerCase().includes('chinese')|| subFileName.toLowerCase().includes('chi')) {
             const numberPartReg = new RegExp(numberPart.replace(/\./g, ''), 'gi');
             const command = `mv '${subFile}' '${serieFolder}/${serieName}.${subFileName.replace(numberPartReg, '').replace(/chinese/gi, `中文字幕${number}`)}'`;
             await handleExec(command);
