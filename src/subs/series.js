@@ -65,6 +65,17 @@ const handleTransferFiles = async allEpisodesFolders => {
               // const command = `mv '${subFile}' '${serieFolder}/${serieName}.${subFileName.replace(numberPartReg, '').replace(ext, `${number}${ext}`)}'`;
               // await handleExec(command);
             }
+          } else {
+            // the subs are already in the correct format
+            const lowerSubFileName = subFileName.toLowerCase();
+            const chineseLans = ['.chinese', '.chi', '.chs', '.cht', '.zh', '.zh-cn', '.zh-tw', '.zh-hk', '.zh-sg', '.zh-mo'];
+            const englishLans = ['.english', '.eng', '.en'];
+            const eng = R.find(i => lowerSubFileName.includes(i))(englishLans);
+            const chi = R.find(i => lowerSubFileName.includes(i))(chineseLans);
+            if (chi || eng) {
+              const command = `mv '${subFile}' '${serieFolder}/${subFileName}'`;
+              await handleExec(command);
+            }
           }
         }
       }
