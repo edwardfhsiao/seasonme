@@ -1,83 +1,54 @@
 # seasonme
 
-A tool to organize your TV show files naming and make sure that the subtitle file matches with the video file in the folder.
+A tool to organize your TV show and movie files by:
+1. **Formatting** - Standardize naming of video and subtitle files
+2. **Moving Subtitles** - Organize subtitle files to match with video files
 
-For instanse, inside ```The.Office.US.S01``` folder you have ```The.Office.US.S01e1.mkv```, but a ```the office 1x1.srt``` was downloaded, and now you can just
-run ```seasonme format```, it will set the files to ```The.Office.US.S01S01.mkv```,```The.Office.US.S01S01.srt``` respectively.
-
-In order to make it work properly, make sure that the ```season``` and ```episode``` info are correctly since the key in this tool is to match the ```season``` number and the ```episode``` number.
-
-
-# <img src="https://github.com/edwardfxiao/seasonme/blob/master/public/index.gif" />
-
+## Installation
 ```sh
 npm install seasonme -g
 ```
 
-```sh
-~$ cd ../The.Office.US.S01
-~$ seasonme format
-```
-or
+## 1. Format Files (`seasonme format`)
+Standardize the naming of your video and subtitle files in a directory.
 
+### Usage
 ```sh
+~$ seasonme format
+# or
 ~$ seasonme format -d MY_FOLDER_PATH
 ```
 
+### Example
+Before:
 ```
 The.Office.US.S01
 │
-│   The.Office.US.S01e1.bluray.mkv
-│   The.Office.US.S01e2.bluray.mkv
-│   The.Office.US.S01e3.bluray.mkv
-│   The.Office.US.S01e4.bluray.mkv
+│   The.Office.US.S01e1.bluray.mp4
+│   The.Office.US.S01e2.bluray.mp4
 │   the office 1x1.srt
 │   the office 1x2.srt
-│   the office 1x3.srt
-│   the office 1x4.srt
 ```
-&#8595;
+
+After:
 ```
 The.Office.US.S01
 │
-│   The.Office.US.S01E1.BluRay.mkv
+│   The.Office.US.S01E1.BluRay.mp4
 │   The.Office.US.S01E1.BluRay.srt
-│   The.Office.US.S01E2.BluRay.mkv
+│   The.Office.US.S01E2.BluRay.mp4
 │   The.Office.US.S01E2.BluRay.srt
-│   The.Office.US.S01E3.BluRay.mkv
-│   The.Office.US.S01E3.BluRay.srt
-│   The.Office.US.S01E4.BluRay.mkv
-│   The.Office.US.S01E4.BluRay.srt
 ```
 
-<br/>
-
-### For testing you can run as below, which gives you 10 random examples
-```sh
-~$ mkdir dummy
-~$ cd dummy
-~$ seasonme generate -n 10
-```
-
-## Format Files
-```sh
-~$ cd ../The.Office.US.S01
-~$ seasonme format
-```
-or
-```sh
-~$ seasonme format -d MY_FOLDER_PATH
-```
-
-## Move Subtitle Files
-Organize and move subtitle files from a Subs directory to match with your video files.
+## 2. Move Subtitles (`seasonme movesubs`)
+Organize subtitle files from a Subs directory to match with your video files. Supports both TV series and movies.
 
 ### For TV Series
 ```sh
-~$ seasonme movesubs -t series -d MY_SERIES_PATH(e.g. ~/your/path/to/Twin.Peaks)
+~$ seasonme movesubs -t series -d MY_SERIES_PATH
 ```
 
-Expects a folder structure like:
+#### Expected Structure
 ```
 Twin.Peaks
 │
@@ -94,25 +65,12 @@ Twin.Peaks
 │           │   English4.srt
 ```
 
-Resulting folder structure:
-```
-Twin.Peaks
-│
-└───Twin.Peaks.S01
-│   │   Twin.Peaks.S01E01.mp4
-│   │   Twin.Peaks.S01E01.English.3.srt
-│   │   Twin.Peaks.S01E01.English.4.srt
-│   │   Twin.Peaks.S01E02.mp4
-│   │   Twin.Peaks.S01E02.English.3.srt
-│   │   Twin.Peaks.S01E02.English.4.srt
-```
-
 ### For Movies
 ```sh
 ~$ seasonme movesubs -t movies -d MY_MOVIES_PATH
 ```
 
-Expects a folder structure like:
+#### Expected Structure
 ```
 movies
 │
@@ -131,23 +89,18 @@ movies
         │   English4.srt
 ```
 
-Resulting folder structure:
-```
-movies
-│
-└───Toy.Story.1995
-│   │   Toy.Story.1995.mp4
-│   │   Toy.Story.1995.English.3.srt
-│   │   Toy.Story.1995.English.4.srt
-│
-└───Mission.Impossible.1996
-    │   Mission.Impossible.1996.mp4
-    │   Mission.Impossible.1996.English.3.srt
-    │   Mission.Impossible.1996.English.4.srt
-```
-
-The command will:
+The `movesubs` command will:
 1. Find all subtitle files in the Subs directory
 2. Rename them to match the video file naming pattern
 3. Move them to the same directory as the video file
 4. Remove the empty Subs directory
+
+## Testing
+Generate sample files to test the functionality:
+```sh
+~$ mkdir dummy
+~$ cd dummy
+~$ seasonme generate -n 10  # Creates 10 random example files
+```
+
+# <img src="https://github.com/edwardfxiao/seasonme/blob/master/public/index.gif" />
