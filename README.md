@@ -63,9 +63,26 @@ Twin.Peaks
 │       └───Twin.Peaks.S01E01
 │           │   English3.srt
 │           │   English4.srt
+│           │   French1.srt
 │       └───Twin.Peaks.S01E02
 │           │   English3.srt
 │           │   English4.srt
+│           │   French1.srt
+```
+
+#### Resulting folder structure:
+```
+Twin.Peaks
+│
+└───Twin.Peaks.S01
+│   │   Twin.Peaks.S01E01.mp4
+│   │   Twin.Peaks.S01E01.English.3.srt
+│   │   Twin.Peaks.S01E01.English.4.srt
+│   │   Twin.Peaks.S01E01.French.1.srt
+│   │   Twin.Peaks.S01E02.mp4
+│   │   Twin.Peaks.S01E02.English.3.srt
+│   │   Twin.Peaks.S01E02.English.4.srt
+│   │   Twin.Peaks.S01E02.French.1.srt
 ```
 
 ### For Movies
@@ -83,6 +100,7 @@ movies
 │   └───Subs
 │       │   English3.srt
 │       │   English4.srt
+│       │   French1.srt
 │
 └───Mission.Impossible.1996
     │   Mission.Impossible.1996.mp4
@@ -90,15 +108,27 @@ movies
     └───Subs
         │   English3.srt
         │   English4.srt
+        │   French1.srt
 ```
 
-The `movesubs` command will:
-1. Find all subtitle files in the Subs directory
-2. Rename them to match the video file naming pattern
-3. Move them to the same directory as the video file
-4. Remove the empty Subs directory
+#### Resulting folder structure:
+```
+movies
+│
+└───Toy.Story.1995
+│   │   Toy.Story.1995.mp4
+│   │   Toy.Story.1995.English.3.srt
+│   │   Toy.Story.1995.English.4.srt
+│   │   Toy.Story.1995.French.1.srt
+│
+└───Mission.Impossible.1996
+    │   Mission.Impossible.1996.mp4
+    │   Mission.Impossible.1996.English.3.srt
+    │   Mission.Impossible.1996.English.4.srt
+    │   Mission.Impossible.1996.French.1.srt
+```
 
-## Testing
+## Testing (for seasonme format)
 Generate sample files to test the functionality:
 ```sh
 ~$ mkdir dummy
