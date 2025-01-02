@@ -94,6 +94,19 @@ Twin.Peaks
 │           │   English4.srt
 ```
 
+Resulting folder structure:
+```
+Twin.Peaks
+│
+└───Twin.Peaks.S01
+│   │   Twin.Peaks.S01E01.mkv
+│   │   Twin.Peaks.S01E01.English.3.srt
+│   │   Twin.Peaks.S01E01.English.4.srt
+│   │   Twin.Peaks.S01E02.mkv
+│   │   Twin.Peaks.S01E02.English.3.srt
+│   │   Twin.Peaks.S01E02.English.4.srt
+```
+
 ### For Movies
 ```sh
 ~$ seasonme movesubs -t movies -d MY_MOVIES_PATH
