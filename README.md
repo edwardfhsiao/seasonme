@@ -58,3 +58,68 @@ The.Office.US.S01
 ~$ cd dummy
 ~$ seasonme generate -n 10
 ```
+
+## Format Files
+```sh
+~$ cd ../The.Office.US.S01
+~$ seasonme format
+```
+or
+```sh
+~$ seasonme format -d MY_FOLDER_PATH
+```
+
+## Move Subtitle Files
+Organize and move subtitle files from a Subs directory to match with your video files.
+
+### For TV Series
+```sh
+~$ seasonme movesubs -t series -d MY_SERIES_PATH
+```
+
+Expects a folder structure like:
+```
+Twin.Peaks
+│
+└───Twin.Peaks.S01
+│   │   Twin.Peaks.S01E01.mkv
+│   │   Twin.Peaks.S01E02.mkv
+│   │
+│   └───Subs
+│       └───Twin.Peaks.S01E01
+│           │   English3.srt
+│           │   English4.srt
+│       └───Twin.Peaks.S01E02
+│           │   English3.srt
+│           │   English4.srt
+```
+
+### For Movies
+```sh
+~$ seasonme movesubs -t movies -d MY_MOVIES_PATH
+```
+
+Expects a folder structure like:
+```
+movies
+│
+└───Toy.Story.1995
+│   │   Toy.Story.1995.mkv
+│   │
+│   └───Subs
+│       │   English3.srt
+│       │   English4.srt
+│
+└───Mission.Impossible.1996
+    │   Mission.Impossible.1996.mkv
+    │
+    └───Subs
+        │   English3.srt
+        │   English4.srt
+```
+
+The command will:
+1. Find all subtitle files in the Subs directory
+2. Rename them to match the video file naming pattern
+3. Move them to the same directory as the video file
+4. Remove the empty Subs directory
