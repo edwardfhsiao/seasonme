@@ -82,8 +82,8 @@ Expects a folder structure like:
 Twin.Peaks
 │
 └───Twin.Peaks.S01
-│   │   Twin.Peaks.S01E01.mkv
-│   │   Twin.Peaks.S01E02.mkv
+│   │   Twin.Peaks.S01E01.mp4
+│   │   Twin.Peaks.S01E02.mp4
 │   │
 │   └───Subs
 │       └───Twin.Peaks.S01E01
@@ -99,10 +99,10 @@ Resulting folder structure:
 Twin.Peaks
 │
 └───Twin.Peaks.S01
-│   │   Twin.Peaks.S01E01.mkv
+│   │   Twin.Peaks.S01E01.mp4
 │   │   Twin.Peaks.S01E01.English.3.srt
 │   │   Twin.Peaks.S01E01.English.4.srt
-│   │   Twin.Peaks.S01E02.mkv
+│   │   Twin.Peaks.S01E02.mp4
 │   │   Twin.Peaks.S01E02.English.3.srt
 │   │   Twin.Peaks.S01E02.English.4.srt
 ```
@@ -117,18 +117,33 @@ Expects a folder structure like:
 movies
 │
 └───Toy.Story.1995
-│   │   Toy.Story.1995.mkv
+│   │   Toy.Story.1995.mp4
 │   │
 │   └───Subs
 │       │   English3.srt
 │       │   English4.srt
 │
 └───Mission.Impossible.1996
-    │   Mission.Impossible.1996.mkv
+    │   Mission.Impossible.1996.mp4
     │
     └───Subs
         │   English3.srt
         │   English4.srt
+```
+
+Resulting folder structure:
+```
+movies
+│
+└───Toy.Story.1995
+│   │   Toy.Story.1995.mp4
+│   │   Toy.Story.1995.English.3.srt
+│   │   Toy.Story.1995.English.4.srt
+│
+└───Mission.Impossible.1996
+    │   Mission.Impossible.1996.mp4
+    │   Mission.Impossible.1996.English.3.srt
+    │   Mission.Impossible.1996.English.4.srt
 ```
 
 The command will:
