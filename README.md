@@ -74,7 +74,7 @@ Organize and move subtitle files from a Subs directory to match with your video 
 
 ### For TV Series
 ```sh
-~$ seasonme movesubs -t series -d MY_SERIES_PATH
+~$ seasonme movesubs -t series -d MY_SERIES_PATH(e.g. ~/your/path/to/Twin.Peaks)
 ```
 
 Expects a folder structure like:
