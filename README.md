@@ -4,6 +4,8 @@ A tool to organize your TV show and movie files by:
 1. **Formatting** - Standardize naming of video and subtitle files
 2. **Moving Subtitles** - Organize subtitle files to match with video files
 
+# <img src="https://github.com/edwardfxiao/seasonme/blob/master/public/index.gif" />
+
 ## Installation
 ```sh
 npm install seasonme -g
@@ -14,6 +16,7 @@ Standardize the naming of your video and subtitle files in a directory.
 
 ### Usage
 ```sh
+~$ cd MY_FOLDER_PATH
 ~$ seasonme format
 # or
 ~$ seasonme format -d MY_FOLDER_PATH
@@ -45,7 +48,7 @@ Organize subtitle files from a Subs directory to match with your video files. Su
 
 ### For TV Series
 ```sh
-~$ seasonme movesubs -t series -d MY_SERIES_PATH
+~$ seasonme movesubs -t series -d MY_SERIES_PATH(e.g. ~/your/path/to/Twin.Peaks)
 ```
 
 #### Expected Structure
@@ -67,7 +70,7 @@ Twin.Peaks
 
 ### For Movies
 ```sh
-~$ seasonme movesubs -t movies -d MY_MOVIES_PATH
+~$ seasonme movesubs -t movies -d MY_MOVIES_PATH(e.g. ~/your/path/to/movies)
 ```
 
 #### Expected Structure
@@ -102,5 +105,3 @@ Generate sample files to test the functionality:
 ~$ cd dummy
 ~$ seasonme generate -n 10  # Creates 10 random example files
 ```
-
-# <img src="https://github.com/edwardfxiao/seasonme/blob/master/public/index.gif" />
